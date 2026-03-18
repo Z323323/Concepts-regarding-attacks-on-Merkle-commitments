@@ -13,7 +13,7 @@ Say we have $n$ people. What's the probability at least two of them share their 
 Assuming every year is made of $365$ days we have
 
 ```math
-\text{Pr}(\bar{A}) = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365} \cdot \dots \cdot \frac{365 - (n - 1)}{365}
+\text{Pr}(\bar{A}) = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365} \cdot \dots \cdot \frac{365 - (n - 1)}{365} = \frac{365!}{365^{n}(365 - n)!}
 ```
 
 because:
@@ -23,4 +23,10 @@ because:
 - $3rd$ person enters the room, the probability he doesn't share his birthday with the $1st$ and the $2nd$ ones is $363$ days over $365$ [ $\frac{363}{365}$ ].
 - $\dots$
 - $n-th$ person enters the room, the probability he doesn't share his birthday with the others is $365 - (n - 1)$ days over $365$ [ $\frac{366 - n}{365}$ ].
+
+Now
+
+```math
+\text{Pr}(A) = 1 - \frac{365!}{365^{n}(365 - n)!}
+```
 

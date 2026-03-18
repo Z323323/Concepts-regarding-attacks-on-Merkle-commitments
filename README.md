@@ -71,7 +71,7 @@ Now
 \log_{e}(x) = z^{1} \rightarrow e^{z^{1}} = e^{z \cdot 1} = x
 ```
 ```math
-\log_{e}(x^{y}) = zy \rightarrow e^{zy} = e^{z^{y}} = x^{y}
+\log_{e}(x^{y}) = zy \rightarrow e^{z^{y}} = e^{z \cdot y} = x^{y}
 ```
 ```math
 \downarrow

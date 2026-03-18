@@ -77,3 +77,10 @@ We can rewrite the last one as
 ```math
 \lim_{x \to \infty} \sum_{k = 0}^{x} \frac{x!}{k!(x - k)!}(\frac{1}{x})^{k} = \sum_{k = 0}^{x} \frac{x!}{k!(x - k)!}(\frac{1}{x^{k}}) = \sum_{k = 0}^{x} \frac{1}{k!}\frac{x(x - 1)(x - 2) \dots (x - k + 1)}{x^{k}}
 ```
+
+We can label the last one as
+
+```math
+\lim_{x \to \infty} \sum_{k = 0}^{x} \frac{1}{k!}\frac{x_{1} \cdot (x - 1)_{2} \cdot (x - 2)_{3} \cdot \dots \cdot (x - (k - 1))_{k}}{x_{1} \cdot x_{2} \cdot \dots \cdot x_{k}}
+```
+

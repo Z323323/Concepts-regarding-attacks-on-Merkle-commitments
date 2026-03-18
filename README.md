@@ -68,16 +68,13 @@ Now
 --
 ```
 ```math
-\log_{e}(x) = Z^{1}
+\log_{e}(x) = Z^{1} \rightarrow e^{Z^{1}} = x
 ```
 ```math
-e^{Z^{1}} = x
+\log_{e}(x^{y}) = Z^{y} \rightarrow e^{Z^{y}} = e^{Zy} = x^{y}
 ```
 ```math
-\log_{e}(x^{y}) = Z^{y}
-```
-```math
-e^{Z^{y}} = e^{Zy} = x^{y}
+\downarrow
 ```
 ```math
 \log_{e}(x^{y}) = y(\log_{e}(x))

@@ -58,16 +58,29 @@ and that $\text{Pr}(\bar{A})$ means "probability of having no collisions on birt
 \text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
 ```
 
+Now
 
+```math
+\lim_{x \to \infty} \log_{e}((1 + \frac{1}{x})^{x}) = \lim_{x \to \infty} x\log_{e}(1 + \frac{1}{x})
+```
 
 ```math
 --
 ```
 ```math
---
+\log_{e}(x) = Z^{1}
 ```
 ```math
---
+e^{Z^{1}} = x
+```
+```math
+\log_{e}(x^{y}) = Z^{y}
+```
+```math
+e^{Z^{y}} = e^{Zy} = x^{y}
+```
+```math
+\log_{e}(x^{y}) = y(\log_{e}(x))
 ```
 ```math
 --

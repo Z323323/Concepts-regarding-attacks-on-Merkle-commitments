@@ -68,10 +68,10 @@ Now
 --
 ```
 ```math
-\log_{e}(x) = Z^{1} \rightarrow e^{Z^{1}} = x
+\log_{e}(x) = z^{1} \rightarrow e^{z^{1}} = x
 ```
 ```math
-\log_{e}(x^{y}) = Z^{y} \rightarrow e^{Z^{y}} = e^{Zy} = x^{y}
+\log_{e}(x^{y}) = zy \rightarrow e^{zy} = e^{z^{y}} = x^{y}
 ```
 ```math
 \downarrow
@@ -82,3 +82,7 @@ Now
 ```math
 --
 ```
+
+This last stuff basically means that **the power** we need to raise $e$ to be equal to $x$ multiplies if we need to raise $e$ to be equal to $x^{y}$, which is a quite intuitive concept.
+
+

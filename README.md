@@ -58,20 +58,18 @@ and that $\text{Pr}(\bar{A})$ means "probability of having no collisions on birt
 \text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
 ```
 
-```math
---
-```
 **Theorem**
+
 ```math
 \lim_{x \to \infty} (1 + \frac{1}{x})^{x} = e
 ```
+
 **Proof**
 
+Let's expand $(1 + \frac{1}{x})^{x}$ using Newton's binom.
+
 ```math
---
+\lim_{x \to \infty} (1 + \frac{1}{x})^{x} = \sum_{k = 0}^{x} \binom{x}{k} 1^{k}(\frac{1}{x})^{x - k} = \sum_{k = 0}^{x} \binom{x}{k} (\frac{1}{x})^{x - k}
 ```
-
-
-This last stuff basically means that **the power** $(z)$ we need to raise $e$ to be equal to $x$ multiplies $(zy)$ if we need to raise $e$ to be equal to $x^{y}$, which is a quite intuitive concept.
 
 

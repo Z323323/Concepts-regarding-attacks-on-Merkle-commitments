@@ -68,7 +68,7 @@ Now
 --
 ```
 ```math
-\log_{e}(x) = z^{1} \rightarrow e^{z^{1}} = x
+\log_{e}(x) = z^{1} \rightarrow e^{z^{1}} = e^{z \cdot 1} = x
 ```
 ```math
 \log_{e}(x^{y}) = zy \rightarrow e^{zy} = e^{z^{y}} = x^{y}

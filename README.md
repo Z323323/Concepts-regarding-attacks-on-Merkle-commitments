@@ -83,6 +83,6 @@ Now
 --
 ```
 
-This last stuff basically means that **the power** we need to raise $e$ to be equal to $x$ multiplies if we need to raise $e$ to be equal to $x^{y}$, which is a quite intuitive concept.
+This last stuff basically means that **the power** $(z)$ we need to raise $e$ to be equal to $x$ multiplies $(zy)$ if we need to raise $e$ to be equal to $x^{y}$, which is a quite intuitive concept.
 
 

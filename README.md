@@ -81,6 +81,6 @@ We can rewrite the last one as
 We can label the last one as
 
 ```math
-\lim_{x \to \infty} \sum_{k = 0}^{x} \frac{1}{k!}\frac{x_{1} \cdot (x - 1)_{2} \cdot (x - 2)_{3} \cdot \dots \cdot (x - (k - 1))_{k}}{x_{1} \cdot x_{2} \cdot \dots \cdot x_{k}} = \sum_{k = 0}^{x} \frac{1}{k!}\frac{x_{1}}\frac{x_{1}} \cdot \frac{(x - 1)_{2}}{x_{2}} \cdot \frac{(x - 2)_{3}}{x_{3}} \dots \cdot \frac{(x - k + 1)_{k}}{x_{k}}
+\lim_{x \to \infty} \sum_{k = 0}^{x} \frac{1}{k!}\frac{x_{1} \cdot (x - 1)_{2} \cdot (x - 2)_{3} \cdot \dots \cdot (x - (k - 1))_{k}}{x_{1} \cdot x_{2} \cdot \dots \cdot x_{k}} = \sum_{k = 0}^{x} \frac{1}{k!}\frac{x_{1}}{x_{1}} \cdot \frac{(x - 1)_{2}}{x_{2}} \cdot \frac{(x - 2)_{3}}{x_{3}} \dots \cdot \frac{(x - k + 1)_{k}}{x_{k}}
 ```
 

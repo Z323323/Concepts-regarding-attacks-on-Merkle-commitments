@@ -87,5 +87,11 @@ We can label the last one as
 Finally, synthetizing for $k = \\{ 0, 1, 2, \dots \\}$ we get
 
 ```math
-\sum_{k = 0}^{x} \frac{1}{k!}\frac{x_{1}}{x_{1}} \cdot \frac{(x - 1)_{2}}{x_{2}} \cdot \frac{(x - 2)_{3}}{x_{3}} \dots \cdot \frac{(x - k + 1)_{k}}{x_{k}} = \frac{1}{0!} + \frac{1}{1!}\frac{x_{1}}{x_{1}} + \frac{1}{2!}\frac{x}{x} \cdot \frac{x - 1}{x} + \frac{1}{3!}\frac{x}{x} \cdot \frac{x - 1}{x} \cdot \frac{x - 2}{x} + \dots
+\lim_{x \to \infty} \sum_{k = 0}^{x} \frac{1}{k!}\frac{x_{1}}{x_{1}} \cdot \frac{(x - 1)_{2}}{x_{2}} \cdot \frac{(x - 2)_{3}}{x_{3}} \dots \cdot \frac{(x - k + 1)_{k}}{x_{k}} = \frac{1}{0!} + \frac{1}{1!}\frac{x_{1}}{x_{1}} + \frac{1}{2!}\frac{x_{1}}{x_{1}} \cdot \frac{(x - 1)_{2}}{x_{2}} + \frac{1}{3!}\frac{x_{1}}{x_{1}} \cdot \frac{(x - 1)_{2}}{x_{2}} \cdot \frac{(x - 2)_{3}}{x_{3}} + \dots =
+```
+```math
+= \frac{1}{0!} + \frac{1}{1!}\frac{x_{1}}{x_{1}} + \frac{1}{2!}\frac{x_{1}}{x_{1}} \cdot \frac{(x - 1)_{2}}{x_{2}} + \frac{1}{3!}\frac{x_{1}}{x_{1}} \cdot \frac{(x - 1)_{2}}{x_{2}} \cdot \frac{(x - 2)_{3}}{x_{3}} + \dots = 1 + 1 + \frac{1}{2} \cdot \frac{(x - 1)_{2}}{x_{2}} + \frac{1}{3!} \cdot \frac{(x - 1)_{2}}{x_{2}} \cdot \frac{(x - 2)_{3}}{x_{3}} + \dots =
+```
+```math
+= 
 ```

@@ -58,30 +58,19 @@ and that $\text{Pr}(\bar{A})$ means "probability of having no collisions on birt
 \text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
 ```
 
-Now
-
 ```math
-\lim_{x \to \infty} \log_{e}((1 + \frac{1}{x})^{x}) = \lim_{x \to \infty} x\log_{e}(1 + \frac{1}{x})
+--
 ```
+**Theorem**
+```math
+\lim_{x \to \infty} (1 + \frac{1}{x})^{x} = e
+```
+**Proof**
 
 ```math
 --
 ```
-```math
-\log_{e}(x) = z \cdot 1 \leftarrow e^{z^{1}} = e^{z \cdot 1} = x
-```
-```math
-\log_{e}(x^{y}) = z \cdot y \leftarrow e^{z^{y}} = e^{z \cdot y} = x^{y}
-```
-```math
-\downarrow
-```
-```math
-\log_{e}(x^{y}) = y(\log_{e}(x))
-```
-```math
---
-```
+
 
 This last stuff basically means that **the power** $(z)$ we need to raise $e$ to be equal to $x$ multiplies $(zy)$ if we need to raise $e$ to be equal to $x^{y}$, which is a quite intuitive concept.
 

@@ -96,4 +96,13 @@ Finally, synthetizing for $k = \\{ 0, 1, 2, \dots \\}$ we get
 = 1 + 1 + \frac{1}{2} \cdot (1 - \frac{1}{x_{2}}) + \frac{1}{3!} \cdot (1 - \frac{1}{x_{2}}) \cdot (1 - \frac{2}{x_{3}}) + \dots = 1 + 1 + \frac{1}{2} \cdot (1 - \frac{1}{x}) + \frac{1}{3!} \cdot (1 - \frac{1}{x}) \cdot (1 - \frac{2}{x}) + \dots
 ```
 
-where this last one is the one you can find on Stackexchange.
+where this last one is the one you can find on Stackexchange. Now, we apply the limit, obtaining
+
+```math
+\lim_{x \to \infty} 1 + 1 + \frac{1}{2} \cdot (1 - \frac{1}{x}) + \frac{1}{3!} \cdot (1 - \frac{1}{x}) \cdot (1 - \frac{2}{x}) + \dots = 1 + 1 + \frac{1}{2} \cdot (1 - 0) + \frac{1}{3!} \cdot (1 - 0) \cdot (1 - 0) + \dots = 1 + 1 + \frac{1}{2} + \frac{1}{3!} + \frac{1}{4!} + \dots = e
+```
+```math
+\square
+```
+
+This is the only real proof of the former identity. Fuck every other sloppy fake proof.

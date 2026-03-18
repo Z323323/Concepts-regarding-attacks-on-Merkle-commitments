@@ -75,5 +75,5 @@ Let's expand $(1 + \frac{1}{x})^{x}$ using Newton's binom.
 We can rewrite the last one as
 
 ```math
-\lim_{x \to \infty} \sum_{k = 0}^{x} \frac{x!}{k!(x - k)!}(\frac{1}{x})^{k} = \sum_{k = 0}^{x} \frac{x!}{k!(x - k)!}(\frac{1}{x^{k}})
+\lim_{x \to \infty} \sum_{k = 0}^{x} \frac{x!}{k!(x - k)!}(\frac{1}{x})^{k} = \sum_{k = 0}^{x} \frac{x!}{k!(x - k)!}(\frac{1}{x^{k}}) = \sum_{k = 0}^{x} \frac{1}{k!}\frac{x(x - 1)(x - 2) \dots (x - k + 1)}{x^{k}}
 ```

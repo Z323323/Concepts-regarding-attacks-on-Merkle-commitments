@@ -55,7 +55,7 @@ we can observe that
 and that $\text{Pr}(\bar{A})$ means "probability of having no collisions on birthdays having $n$ guys". This means that the former, in an hash function scenario where we handle $256$ bits digests, can be rewritten as
 
 ```math
-\text{Pr}(\text{no_collisions_on_n_hashes}) = (1 - \frac{1}{2^{256}}) \cdot (1 - \frac{2}{2^{256}}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{256}})
+\text{Pr}(\text{no\_collisions\_on\_n\_hashes}) = (1 - \frac{1}{2^{256}}) \cdot (1 - \frac{2}{2^{256}}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{256}})
 ```
 
 ```math

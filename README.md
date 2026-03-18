@@ -1,1 +1,3 @@
-# Concepts-regarding-attacks-on-Merkle-commitments
+# Concepts regarding attacks on Merkle commitments
+
+##

@@ -93,5 +93,7 @@ Finally, synthetizing for $k = \\{ 0, 1, 2, \dots \\}$ we get
 = 1 + 1 + \frac{1}{2} \cdot \frac{(x - 1)_{2}}{x_{2}} + \frac{1}{3!} \cdot \frac{(x - 1)_{2}}{x_{2}} \cdot \frac{(x - 2)_{3}}{x_{3}} + \dots = 1 + 1 + \frac{1}{2} \cdot (\frac{x_{2}}{x_{2}} - \frac{1}{x_{2}}) + \frac{1}{3!} \cdot (\frac{x_{2}}{x_{2}} - \frac{1}{x_{2}}) \cdot (\frac{x_{3}}{x_{3}} - \frac{1}{x_{3}}) + \dots =
 ```
 ```math
-= 1 + 1 + \frac{1}{2} \cdot (1 - \frac{1}{x_{2}}) + \frac{1}{3!} \cdot (1 - \frac{1}{x_{2}}) \cdot (1 - \frac{1}{x_{3}}) + \dots
+= 1 + 1 + \frac{1}{2} \cdot (1 - \frac{1}{x_{2}}) + \frac{1}{3!} \cdot (1 - \frac{1}{x_{2}}) \cdot (1 - \frac{2}{x_{3}}) + \dots = 1 + 1 + \frac{1}{2} \cdot (1 - \frac{1}{x}) + \frac{1}{3!} \cdot (1 - \frac{1}{x}) \cdot (1 - \frac{2}{x}) + \dots
 ```
+
+where this last one is the one you can find on Stackexchange.

@@ -38,4 +38,35 @@ because:
 >- $\dots$
 >- $n-th$ guy enters the room, the probability he shares his birthday with the others is $n - 1$ days over $365$, that is $1 - \frac{366 - n}{365} = \frac{365 - 366 + n}{365} = \frac{n - 1}{365}$.
 
+## Linking the birthday paradox to hash-collisions
 
+Back to
+
+```math
+\text{Pr}(\bar{A}) = \frac{365}{365} \cdot \frac{364}{365} \cdot \frac{363}{365} \cdot \dots \cdot \frac{365 - (n - 1)}{365}
+```
+
+we can observe that
+
+```math
+\text{Pr}(\bar{A}) = (1 - \frac{1}{365}) \cdot (1 - \frac{2}{365}) \cdot \dots \cdot (1 - \frac{n - 1}{365})
+```
+
+and that $\text{Pr}(\bar{A})$ means "probability of having no collisions on birthdays having $n$ guys". This means that the former, in an hash function scenario where we handle $256$ bits digests, can be rewritten as
+
+```math
+\text{Pr}(\text{no_collisions_on_n_hashes}) = (1 - \frac{1}{2^{256}}) \cdot (1 - \frac{2}{2^{256}}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{256}})
+```
+
+```math
+--
+```
+```math
+--
+```
+```math
+--
+```
+```math
+--
+```

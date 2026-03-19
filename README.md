@@ -87,3 +87,27 @@ Back to our hash collisions scenario, renaming $2^{160} - 1 = N$ we can finally 
 ```math
 \text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{N}) \cdot (1 - \frac{2}{N}) \cdot \dots \cdot (1 - \frac{n - 1}{N}) \approx e^{- \frac{1}{N}} \cdot e^{- \frac{2}{N}} \cdot \dots \cdot e^{- \frac{n - 1}{N}} = \prod_{i = 1}^{n - 1} e^{- \frac{i}{N}}
 ```
+
+and
+
+```math
+e^{- \frac{1}{N}} \cdot e^{- \frac{2}{N}} \cdot \dots \cdot e^{- \frac{n - 1}{N}} = e^{- (\frac{1 + 2 + \dots + n - 1)}{N})}
+```
+
+Recalling the Gauss formula
+
+```math
+\sum_{i = 1}^{n} i = \frac{n(n + 1)}{2}
+```
+
+we have
+
+```math
+1 + 2 + \dots + n - 1 = \sum_{i = 1}^{n - 1} i = \frac{n(n - 1)}{2}
+```
+
+and
+
+```math
+e^{- (\frac{1 + 2 + \dots + n - 1)}{N})} = e^{- (\frac{\frac{n(n - 1)}{2}}{N})}
+```

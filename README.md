@@ -183,3 +183,20 @@ and therefore
 \diamond\diamond\diamond
 ```
 
+Now we are finally back to our hash collisions. Recalling
+
+```math
+\text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
+```
+
+we can set $n = 2^{160} - 1$, that is, we want to calculate the probability of an hash collision testing all the possible outputs of the hash function. Thus, now
+
+```math
+\text{Pr}(\text{no\_collision\_on\_$2^{160} - 1$\_hashes}) \approx \lim{y \to \infty} (1 - \frac{1}{y})^{y} = e^{- y}
+```
+
+then we can say
+
+```math
+\text{Pr}(\text{no\_collision\_on\_n\_hashes}) =
+```

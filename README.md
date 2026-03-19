@@ -165,7 +165,7 @@ The sign behaviour is subtle. The best way to think about it I found is to focus
 t = \frac{y}{- a} \rightarrow y = (- a)t
 ```
 
-This somehow justify why $y \to \infty$ doesn't cause $t \to - \infty$. The whole sign behaviour is completely hold by the $a$ constant and we simply declare $t$ to flip its sign. Thinking about it deeply quite makes sense. If we are declaring $t$ to be sign flipped compared to $y$, then it wouldn't make sense to evaluate $t \to - y$, because we'd lose the meaning we want to express (it wouldn't make sense). Keeping the sign between $y$ and $t$ both $\to \infty$ we are basically flipping both signs: **(1)** the one between addends inside parentheses and **(2)** the exponent one. Now we can finally obtain
+This somehow justify why $y \to \infty$ doesn't cause $t \to - \infty$. The whole sign behaviour is completely held by the $a$ constant and we simply declare $t$ to flip its sign. Thinking about it deeply quite makes sense. If we are declaring $t$ to be sign flipped compared to $y$, then it wouldn't make sense to evaluate $t \to - y$, because we'd lose the meaning we want to express (it wouldn't make sense). Keeping the sign between $y$ and $t$ both $\to \infty$ we are basically flipping both signs: **(1)** the one between addends inside parentheses and **(2)** the exponent one. Now we can finally obtain
 
 ```math
 \lim_{t \to \infty} (1 + \frac{1}{t})^{- at} = [(1 + \frac{1}{t})^{t}]^{- a} = e^{- a}

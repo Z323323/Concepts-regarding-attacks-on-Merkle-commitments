@@ -63,3 +63,9 @@ Now we can observe that (if you don't understand why $e^{x}$ equals that, go to 
 ```math
 e^{x} = \sum_{n = 0}^{\infty} \frac{x^{n}}{n!} = \frac{x^{0}}{0!} + \frac{x^{1}}{1!} + \frac{x^{2}}{2!} + \frac{x^{3}}{3!} + \dots = \frac{1}{1} + \frac{x}{1} + \frac{x^{2}}{2} + \frac{x^{3}}{3!} + \dots = 1 + x + \frac{x^{2}}{2} + \frac{x^{3}}{3!} + \dots
 ```
+
+if we set $x = \frac{1}{u}$ where $\lim_{u \to \infty}$, then
+
+```math
+e^{- x} = \lim_{u \to \infty} e^{- \frac{1}{u}} = \frac{(- \frac{1}{u})^{n}}{n!} = \frac{(- \frac{1}{u})^{0}}{0!} + \frac{(- \frac{1}{u})^{1}}{1!} + \frac{(- \frac{1}{u})^{2}}{2!} + \frac{(- \frac{1}{u})^{3}}{3!} + \dots = \frac{1}{1} - \frac{\frac{1}{u}}{1} + \frac{(\frac{1}{u})^{2}}{2} - \frac{(\frac{1}{u})^{3}}{3!} + \dots = 1 + x + \frac{x^{2}}{2} + \frac{x^{3}}{3!} + \dots
+```

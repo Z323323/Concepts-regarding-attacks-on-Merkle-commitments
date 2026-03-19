@@ -57,6 +57,9 @@ and that $\text{Pr}(\bar{A})$ means "probability of having no collisions on birt
 ```math
 \text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
 ```
+```math
+\diamond\diamond\diamond
+```
 
 **Theorem**
 
@@ -110,12 +113,39 @@ This is the only real proof of the former identity. Fuck every other corposloppy
 **Theorem**
 
 ```math
-\lim_{y \to \infty} (1 - \frac{a}{y})^{y} = e^{- a}
+\lim_{y \to \infty} (1 + \frac{a}{y})^{y} = e^{a}
 ```
 
 **Proof**
 
 Setting
+
+```math
+t = \frac{y}{a} \rightarrow y = at
+```
+
+we can rewrite the previous as
+
+```math
+\lim_{t \to \infty} (1 + \frac{1}{t})^{at}
+```
+
+because $y \to \infty$ causes $t \to \infty$. Now
+
+```math
+\lim_{t \to \infty} (1 + \frac{1}{t})^{at} = [(1 + \frac{1}{t})^{t}]^{a} = e^{a}
+```
+```math
+\square
+```
+
+**Theorem**
+
+```math
+\lim_{y \to \infty} (1 - \frac{a}{y})^{y} = e^{- a}
+```
+
+**Proof**
 
 ```math
 t = - \frac{y}{a} \rightarrow y = - at
@@ -124,11 +154,30 @@ t = - \frac{y}{a} \rightarrow y = - at
 we can rewrite the previous as
 
 ```math
-\lim_{y \to \infty} (1 + \frac{1}{t})^{- at}
+\lim_{t \to - \infty} (1 + \frac{1}{t})^{- at}
 ```
 
-and $\lim_{y \to \infty}$ basically means that $\lim_{t \to - \infty}$. Now
+because $y \to \infty$ causes $t \to - \infty$. The sign behaviour is subtle. Basically, if $t \to - \infty$, then we can extract $(1 + \frac{1}{t})^{t}$ from
 
 ```math
-\lim_{y \to \infty} (1 + \frac{1}{t})^{- at} = [(1 + \frac{1}{t})^{t}]^{- a} = e^{- a}
+[(1 + \frac{1}{t})^{t}]^{- a}
 ```
+
+and observe that under $t \to - \infty$, $y \to \infty$ and $(1 + \frac{1}{t})^{t} \to (1 + \frac{1}{t \to \infty})^{t \to \infty}$, because of sign conversion inside the parentheses and because of $- a$ which holds the minus. This means that 
+
+```math
+\lim_{t \to - \infty} (1 + \frac{1}{t})^{- at} = [(1 + \frac{1}{t})^{t}]^{- a} = e^{- a}
+```
+
+and therefore
+
+```math
+\lim_{y \to \infty} (1 - \frac{a}{y})^{y} = e^{- a}
+```
+```math
+\square
+```
+```math
+\diamond\diamond\diamond
+```
+

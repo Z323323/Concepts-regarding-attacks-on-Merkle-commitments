@@ -70,8 +70,20 @@ if we set $x = \frac{1}{u}$ where $\lim_{u \to \infty}$, then
 e^{- x} = \lim_{u \to \infty} e^{- \frac{1}{u}} = \sum_{n = 0}^{\infty} \frac{(- \frac{1}{u})^{n}}{n!} = \frac{(- \frac{1}{u})^{0}}{0!} + \frac{(- \frac{1}{u})^{1}}{1!} + \frac{(- \frac{1}{u})^{2}}{2!} + \frac{(- \frac{1}{u})^{3}}{3!} + \dots = \frac{1}{1} - \frac{\frac{1}{u}}{1} + \frac{(\frac{1}{u})^{2}}{2} - \frac{(\frac{1}{u})^{3}}{3!} + \dots = 1 - \frac{1}{u} + \frac{1}{2u^{2}} - \frac{1}{3!u^{3}} + \dots \approx 1 - \frac{1}{u}
 ```
 
-[ because $\frac{1}{u} \to 0$ ]. This finally means that we can consider
+[ because $\frac{1}{u} \to 0$ ] where
 
 ```math
-\text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1}) \approx (1 - x) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
+1 - \frac{1}{u} \rightarrow 1 - x
+```
+
+This finally means that whenever $x \to 0$ we can consider
+
+```math
+e^{- x} \approx 1 - x
+```
+
+Back to our hash collisions scenario, renaming $2^{160} - 1 = N$ we can finally see that
+
+```math
+\text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1}) = (1 - x_{1}) \cdot (1 - x_{2}) \cdot \dots \cdot (1 - x_{n - 1}) \approx e^{- \frac{1}{N}} \cdot e^{- \frac{2}{N}} \cdot \dots \cdot e^{- \frac{n - 1}{N}} = \sum_{i = 1}^{n - 1} e^{- \frac{i}{N}}
 ```

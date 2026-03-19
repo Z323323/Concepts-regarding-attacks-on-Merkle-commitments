@@ -52,7 +52,7 @@ we can observe that
 \text{Pr}(\bar{A}) = (1 - \frac{1}{365}) \cdot (1 - \frac{2}{365}) \cdot \dots \cdot (1 - \frac{n - 1}{365})
 ```
 
-and that $\text{Pr}(\bar{A})$ means "probability of having no collisions on birthdays having $n$ guys". This means that the former, in an hash function scenario where we handle $160$ bits digests, can be rewritten as
+and that $\text{Pr}(\bar{A})$ means "probability of having no collisions on birthdays, having $n$ guys". This means that the former, in an hash function scenario where we handle $160$ bits digests, can be rewritten as
 
 ```math
 \text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
@@ -105,4 +105,30 @@ where this last one is the one you can find on Stackexchange. Now, we apply the 
 \square
 ```
 
-This is the only real proof of the former identity. Fuck every other sloppy fake proof.
+This is the only real proof of the former identity. Fuck every other corposloppy fake proof.
+
+**Theorem**
+
+```math
+\lim_{y \to \infty} (1 - \frac{a}{y})^{y} = e^{- a}
+```
+
+**Proof**
+
+Setting
+
+```math
+t = - \frac{y}{a} \rightarrow y = - at
+```
+
+we can rewrite the previous as
+
+```math
+\lim_{y \to \infty} (1 + \frac{1}{t})^{- at}
+```
+
+and $\lim_{y \to \infty}$ basically means that $\lim_{t \to - \infty}$. Now
+
+```math
+\lim_{y \to \infty} (1 + \frac{1}{t})^{- at} = [(1 + \frac{1}{t})^{t}]^{- a} = e^{- a}
+```

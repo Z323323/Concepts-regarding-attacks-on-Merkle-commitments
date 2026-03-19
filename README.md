@@ -58,28 +58,8 @@ and that $\text{Pr}(\bar{A})$ means "probability of having no collisions on birt
 \text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
 ```
 
-
-
-
-
-Now we are finally back to our hash collisions. Recalling
+Now we can observe that (if you don't understand why $e^{x}$ equals that, go to [https://github.com/Z323323/Complex-numbers-background]), recalling
 
 ```math
-\text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
-```
-
-we observe
-
-```math
-
-```
-
-```math
-\text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
-```
-
-then we can say
-
-```math
-\text{Pr}(\text{no\_collision\_on\_n\_hashes}) =
+e^{x} = \sum_{n = 0}^{\infty} \frac{x^{n}}{n!} = \frac{x^{0}}{0!} + \frac{x^{1}}{1!} + \frac{x^{2}}{2!} + \frac{x^{3}}{3!} + \dots = \frac{1}{1} + \frac{x}{1} + \frac{x^{2}}{2} + \frac{x^{3}}{3!} + \dots = 1 + x + \frac{x^{2}}{2} + \frac{x^{3}}{3!} + \dots
 ```

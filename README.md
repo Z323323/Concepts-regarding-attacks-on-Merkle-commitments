@@ -147,6 +147,8 @@ because $y \to \infty$ causes $t \to \infty$. Now
 
 **Proof**
 
+Setting
+
 ```math
 t = - \frac{y}{a} \rightarrow y = - at
 ```
@@ -154,19 +156,19 @@ t = - \frac{y}{a} \rightarrow y = - at
 we can rewrite the previous as
 
 ```math
-\lim_{t \to - \infty} (1 + \frac{1}{t})^{- at}
+\lim_{t \to \infty} (1 + \frac{1}{t})^{- at}
 ```
 
-because $y \to \infty$ causes $t \to - \infty$. The sign behaviour is subtle. Basically, if $t \to - \infty$, then we can extract $(1 + \frac{1}{t})^{t}$ from
+The sign behaviour is subtle. The best way to think about it I found is to focus on the application of the minus sign. What we are really doing in the substitution is
 
 ```math
-[(1 + \frac{1}{t})^{t}]^{- a}
+t = \frac{y}{- a} \rightarrow y = (- a)t
 ```
 
-and observe that under $t \to - \infty$, $y \to \infty$ and $(1 + \frac{1}{t})^{t} \to (1 + \frac{1}{t \to \infty})^{t \to \infty}$, because of sign conversion inside the parentheses and because of $- a$ which holds the minus. This means that 
+This somehow justify why $y \to \infty$ doesn't causes $t \to - \infty$. The whole sign behaviour is completely hold by the $a$ constant and we simply declare $t$ to flip its sign. Now we can finally obtain
 
 ```math
-\lim_{t \to - \infty} (1 + \frac{1}{t})^{- at} = [(1 + \frac{1}{t})^{t}]^{- a} = e^{- a}
+\lim_{t \to \infty} (1 + \frac{1}{t})^{- at} = [(1 + \frac{1}{t})^{t}]^{- a} = e^{- a}
 ```
 
 and therefore

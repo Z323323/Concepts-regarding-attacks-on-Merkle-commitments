@@ -109,5 +109,5 @@ we have
 and
 
 ```math
-e^{- (\frac{1 + 2 + \dots + n - 1)}{N})} = e^{- (\frac{n(n - 1)}{2N})}
+e^{- (\frac{1 + 2 + \dots + n - 1)}{N})} = e^{- (\frac{n(n - 1)}{2N})} \approx e^{- (\frac{n^{2}}{2N})}
 ```

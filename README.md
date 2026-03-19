@@ -67,7 +67,7 @@ e^{x} = \sum_{n = 0}^{\infty} \frac{x^{n}}{n!} = \frac{x^{0}}{0!} + \frac{x^{1}}
 if we set $x = \frac{1}{u}$ where $\lim_{u \to \infty}$, then
 
 ```math
-e^{- x} = \lim_{u \to \infty} e^{- \frac{1}{u}} = \sum_{n = 0}^{\infty} \frac{(- \frac{1}{u})^{n}}{n!} = \frac{(- \frac{1}{u})^{0}}{0!} + \frac{(- \frac{1}{u})^{1}}{1!} + \frac{(- \frac{1}{u})^{2}}{2!} + \frac{(- \frac{1}{u})^{3}}{3!} + \dots = \frac{1}{1} - \frac{\frac{1}{u}}{1} + \frac{(\frac{1}{u})^{2}}{2} - \frac{(\frac{1}{u})^{3}}{3!} + \dots = 1 - \frac{1}{u} + \frac{2}{u^{2}} - \frac{3!}{u^{3}} + \dots \approx 1 - \frac{1}{u}
+e^{- x} = \lim_{u \to \infty} e^{- \frac{1}{u}} = \sum_{n = 0}^{\infty} \frac{(- \frac{1}{u})^{n}}{n!} = \frac{(- \frac{1}{u})^{0}}{0!} + \frac{(- \frac{1}{u})^{1}}{1!} + \frac{(- \frac{1}{u})^{2}}{2!} + \frac{(- \frac{1}{u})^{3}}{3!} + \dots = \frac{1}{1} - \frac{\frac{1}{u}}{1} + \frac{(\frac{1}{u})^{2}}{2} - \frac{(\frac{1}{u})^{3}}{3!} + \dots = 1 - \frac{1}{u} + \frac{1}{2u^{2}} - \frac{1}{3!u^{3}} + \dots \approx 1 - \frac{1}{u}
 ```
 
 [ because $\frac{1}{u} \to 0$ ] where

@@ -189,10 +189,10 @@ Now we are finally back to our hash collisions. Recalling
 \text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{2^{160} - 1}) \cdot (1 - \frac{2}{2^{160} - 1}) \cdot \dots \cdot (1 - \frac{n - 1}{2^{160} - 1})
 ```
 
-we can set $n = 2^{160} - 1$, that is, we want to calculate the probability of an hash collision testing all the possible outputs of the hash function. Thus, now
+we can set $n = 2^{160} - 1$, that is, we want to calculate the probability of an hash collision testing all the possible outputs of the hash function. Setting also $\text{Pr}(\text{no\_collision\_on\_n\_hashes}) = \text{Pr}(H\_C\_on\_2^{160} - 1\_hashes)$ we then have
 
 ```math
-\text{Pr}(\text{no\_collision\_on\_$2^{160} - 1$\_hashes}) \approx \lim{y \to \infty} (1 - \frac{1}{y})^{y} = e^{- y}
+\text{Pr}(H\_C\_on\_2^{160} - 1\_hashes) \approx \lim{y \to \infty} (1 - \frac{1}{y})^{y} = e^{- y}
 ```
 
 then we can say

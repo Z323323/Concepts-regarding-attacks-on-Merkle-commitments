@@ -85,5 +85,5 @@ e^{- x} \approx 1 - x
 Back to our hash collisions scenario, renaming $2^{160} - 1 = N$ we can finally see that
 
 ```math
-\text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{N}) \cdot (1 - \frac{2}{N}) \cdot \dots \cdot (1 - \frac{n - 1}{N}) = (1 - x_{1}) \cdot (1 - x_{2}) \cdot \dots \cdot (1 - x_{n - 1}) \approx e^{- \frac{1}{N}} \cdot e^{- \frac{2}{N}} \cdot \dots \cdot e^{- \frac{n - 1}{N}} = \sum_{i = 1}^{n - 1} e^{- \frac{i}{N}}
+\text{Pr}(\text{no\_collision\_on\_n\_hashes}) = (1 - \frac{1}{N}) \cdot (1 - \frac{2}{N}) \cdot \dots \cdot (1 - \frac{n - 1}{N}) = (1 - x_{1}) \cdot (1 - x_{2}) \cdot \dots \cdot (1 - x_{n - 1}) \approx e^{- \frac{1}{N}} \cdot e^{- \frac{2}{N}} \cdot \dots \cdot e^{- \frac{n - 1}{N}} = \prod_{i = 1}^{n - 1} e^{- \frac{i}{N}}
 ```

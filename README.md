@@ -124,11 +124,32 @@ Extracting now
 \frac{n^{2}}{2N}
 ```
 
-we can see that the probability of having no hash collisions **decreases quadratically on $n$ attempts**. This is finally why it is called a _"paradox"_. Let's now calculate **the number of attempts ($n$) needed in order to achieve the $80\\%$ probability of a collision (we would be almost sure to hit one)**. This means we need to compute **the $20\\%$ probability of not having an hash collision**. Now
+we can see that the probability of having no hash collision **decreases quadratically on $n$ attempts**. This is finally why it is called a _"paradox"_. Let's now calculate **the number of attempts ($n$) needed in order to achieve the $80\\%$ probability of a collision (we would be almost sure to hit one)**. This means we need to compute **the $20\\%$ probability of not having an hash collision**. Now
 
 ```math
 20\% = e^{- (\frac{n^{2}}{2N})}
 ```
 ```math
-\log_{e}(0,8) = \log_{e}
+\log_{e}(0,2) = - \frac{n^{2}}{2N}
+```
+```math
+--
+```
+```math
+\log_{e}(0,2) = \log_{e}(1/5) = \log_{e}(1) - \log_{e}(5) = 0 - 1,609437912 = - 1,609437912
+```
+
+For this last equations refer to [https://github.com/Z323323/Logarithm-rules].
+
+```math
+--
+```
+```math
+- 1,609437912 = - \frac{n^{2}}{2N}
+```
+```math
+n^{2} = 2N(1,609437912)
+```
+```math
+n = \sqrt{2N}\sqrt{1,609437912}
 ```

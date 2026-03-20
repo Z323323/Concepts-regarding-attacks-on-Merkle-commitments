@@ -153,3 +153,13 @@ n^{2} = 2N(1.609437912)
 ```math
 n = \sqrt{2N}\sqrt{1.609437912}
 ```
+
+Again, this clearly shows how the number of attempts required to be almost sure [ $80\\%$ ] to hit a collision is roughly the square root of the the possible values $N$. If $N = 2^{160}$ then
+
+```math
+\sqrt{N} = \sqrt{2^{160}} = 2^{160 / 2} = 2^{80}
+```
+
+which finally somehow justifies why people write the security of hash functions is half the bits of the digest.
+
+Now we need to understand why it is so simple to hit one collision, and what actually the paradox states. This is important in order to think of some collision attack.

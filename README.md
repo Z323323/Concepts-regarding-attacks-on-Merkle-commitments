@@ -184,3 +184,4 @@ hashes for each vector (`next_state, prev_state`). Now, if we apply the _"birthd
 \text{Pr}(\text{collision}) = 1 - \frac{1}{e^{\frac{n^{2}}{2N}}} = 1 - \frac{1}{e^{\frac{(2^{34})^{2}}{2(2^{256})}}} = 1 - \frac{1}{e^{\frac{2^{68}}{2^{257}}}} = 1 - \frac{1}{e^{\frac{1}{2^{189}}}} = 1 - \frac{1}{\sqrt[2^{189}]{e}} = 1 - \frac{1}{1} = 1 - 1 = 0
 ```
 
+probability of messing with SHA256 using Google's supercomputer. This might change with QCs but who knows, I'm not an expert.

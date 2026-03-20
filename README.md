@@ -109,5 +109,19 @@ we have
 and
 
 ```math
-e^{- (\frac{1 + 2 + \dots + n - 1)}{N})} = e^{- (\frac{n(n - 1)}{2N})} \approx e^{- (\frac{n^{2}}{2N})}
+e^{- (\frac{1 + 2 + \dots + n - 1)}{N})} = e^{- (\frac{n(n - 1)}{2N})} \approx e^{- (\frac{n^{2}}{2N})} = \frac{1}{e^{\frac{n^{2}}{2N}}}
 ```
+
+so that
+
+```math
+\text{Pr}(\text{no\_collision\_on\_n\_hashes}) = \frac{1}{e^{\frac{n^{2}}{2N}}}
+```
+
+Extracting now
+
+```math
+\frac{n^{2}}{2N}
+```
+
+we can see that the probability of having no hash collisions **decreases quadratically on $n$ attempts**. This is finally why it is called a "paradox". Let's calculate the $80\%$ probability of a collision. We have $80\% = \frac{4}{5}$.

@@ -181,6 +181,6 @@ Another approach which I would follow is the pure one. Say we have SHA256, so 25
 hashes for each vector (`next_state, prev_state`). Now, if we apply the _"birthday paradox"_ we get
 
 ```math
-\text{Pr}(\text{collision}) = 1 - \frac{1}{e^{\frac{n^{2}}{2N}}} = 1 - \frac{1}{e^{\frac{(2^{34})^{2}}{2(2^{256})}}} = 1 - \frac{1}{e^{\frac{2^{68}}{2^{257}}}} = 1 - \frac{1}{e^{\frac{1}{2^{189}}}} = 1 - \frac{1}{\sqrt[189]{e}} \approx 1 - \frac{1}{1} = 1 - 1 = 0
+\text{Pr}(\text{collision}) = 1 - \frac{1}{e^{\frac{n^{2}}{2N}}} = 1 - \frac{1}{e^{\frac{(2^{34})^{2}}{2(2^{256})}}} = 1 - \frac{1}{e^{\frac{2^{68}}{2^{257}}}} = 1 - \frac{1}{e^{\frac{1}{2^{189}}}} = 1 - \frac{1}{\sqrt[2^{189}]{e}} = 1 - \frac{1}{1} = 1 - 1 = 0
 ```
 

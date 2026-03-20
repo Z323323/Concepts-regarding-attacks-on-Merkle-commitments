@@ -130,13 +130,13 @@ we can see that the probability of having no hash collision **decreases quadrati
 20\% = e^{- (\frac{n^{2}}{2N})}
 ```
 ```math
-\log_{e}(0,2) = - \frac{n^{2}}{2N}
+\log_{e}(0.2) = - \frac{n^{2}}{2N}
 ```
 ```math
 --
 ```
 ```math
-\log_{e}(0,2) = \log_{e}(1/5) = \log_{e}(1) - \log_{e}(5) = 0 - 1.609437912 = - 1.609437912
+\log_{e}(0.2) = \log_{e}(1/5) = \log_{e}(1) - \log_{e}(5) = 0 - 1.609437912 = - 1.609437912
 ```
 
 For these last equations refer to [https://github.com/Z323323/Logarithm-rules].
@@ -154,7 +154,7 @@ n^{2} = 2N(1.609437912)
 n = \sqrt{2N}\sqrt{1.609437912}
 ```
 
-Again, this clearly shows how the number of attempts required to be almost sure [ $80\\%$ ] to hit a collision is roughly the square root of the the possible values $N$. If $N = 2^{160}$ then
+Again, this clearly shows how the number of attempts required to be almost sure [ $80\\%$ ] to hit a collision is roughly the square root of all the possible values $N$ we could check. If $N = 2^{160}$ then
 
 ```math
 \sqrt{N} = \sqrt{2^{160}} = 2^{160 / 2} = 2^{80}
@@ -162,4 +162,14 @@ Again, this clearly shows how the number of attempts required to be almost sure 
 
 which finally somehow justifies why people write the security of hash functions is half the bits of the digest.
 
-Now we need to understand why it is so simple to hit one collision, and what actually the paradox states. This is important in order to think of some collision attack.
+Now we need to understand why it is so simple to hit one collision, and therefore what actually the paradox states. This is important in order to think of some collision attack.
+
+## The _"paradox"_ explained
+
+In order to understand why it is so simple to obtain a collision we need to understand that the _birthday paradox_ calculates the probability everyone in the group of people has to be born the same day of anyone else, i.e. **for each person birthday, we should check all other people birthdays**. That's why a collision is so likely to happen.
+
+## From the _"paradox"_ to the real world
+
+Now that we know basically everything about the _birthday paradox_, we should ask ourselves _"how the actual fuck would I check each hash with all the others in a real scenario?"_.
+
+

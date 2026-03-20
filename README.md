@@ -170,6 +170,8 @@ In order to understand why it is so simple to obtain a collision we need to unde
 
 ## From the _"paradox"_ to the real world
 
-Now that we know basically everything about the _birthday paradox_, we should ask ourselves _"how the actual fuck would I check each hash with all the others in a real scenario?"_. Well the fact is that **we don't need to**. Since we have a probability of collision, then we could generate random hashes and check if we got a collision end of the story. The interesting stuff here, is that **in order to exploit the birthday paradox we should (at least this is my opinion) generate random hashes and check, otherwise if we set one hash and variate the other one, we would just be checking the collision on some well defined hash, for which the probability falls to **
+Now that we know basically everything about the _birthday paradox_, we should ask ourselves _"how the actual fuck would I check each hash with all the others in a real scenario?"_. Well the fact is that **we don't need to**. Since we have a probability of collision, then we could generate random hashes and check if we got a collision end of the story. The interesting stuff here, is that **in order to exploit the birthday paradox we should (at least this is my opinion) generate random hashes and check them, otherwise if we set one hash and randomize the other one, we would just be checking the collision on some well defined hash, for which the probability falls to $\frac{1}{N}$**. See that perhaps _"paradox"_ noun is well defined.
+
+## Floyd algorithm
 
 

@@ -172,10 +172,15 @@ In order to understand why it is so simple to obtain a collision we need to unde
 
 Now that we know basically everything about the _birthday paradox_, we should ask ourselves **_"how the actual fuck would I check each hash with all the others in a real scenario?"_**. Well, there are algorithms like _turtoise and hare_ (Robert W. Floyd) which try to solve the problem of memory occupation. They try to find collisions building only 2 "paths" of hashes and trying to find the "period" of the function, and after that, they try to rebuild the point of collision. The main problem of these kind of algorithms is that the hash "paths" are only buildable using the form $H(H(H(\dots(x)\dots)))$, and for really secure stuff like SHA256 etc. it's not feasible because the "periods" are too long to compute. Even if we talk about an _hare_, we are talking about an _hare_ which needs to run from Earth to the end of the galaxy.
 
-Another approach which I would follow is the pure one. Say we have SHA256, so 256 bits digests, so 32 bytes. We exploit the $n$ value. That is, we use as much RAM as possible to compute as many hashes as possible starting from a crazy long vector of random seeds. For each step we compute $H$ on every seed, then, we use the fastest way possible to compute `next_state - prev_state = state_diff` (hyper parallelization required here). After that, we could try `r = 1; r = r * each_256_bits_element_of_the_state_diff_vector`. If we get $r = 0$ then we have a collision, otherwise we don't. But ig there are faster methods available. So, what's the main problem here? Having 1TB of RAM (kinda optimistic) we could handle
+Another approach which I would follow is the pure one. Say we have SHA256, so 256 bits digests, so 32 bytes. We exploit the $n$ value. That is, we use as much RAM as possible to compute as many hashes as possible starting from a crazy long vector of random seeds. For each step we compute $H$ on every seed, then, we use the fastest way possible to compute `next_state - prev_state = state_diff` (hyper parallelization required here). After that, we could try `r = 1; r = r * each_256_bits_element_of_the_state_diff_vector`. If we get $r = 0$ then we have a collision, otherwise we don't. But ig there are faster methods available (like autoflag a $0$ buffer from HW). So, say we could afford the previous 2 problems in O(1), what's the main problem now? Having 1TB of RAM (kinda optimistic) we could handle
 
 ```math
-\frac{1TB}{(2 \cdot 32)B} = \frac{2^{40}B}{2^{6}B} = 2^{34}B
+\frac{1TB}{(2 \cdot 32)B} = \frac{2^{40}B}{2^{6}B} = 2^{34}
 ```
 
+hashes for each vector (`next_state, prev_state`). Now, if we apply the _"birthday paradox"_ we get
+
+```math
+\text{Pr}(\text{collision}) = 1 - \frac{1}{e^{\frac{n^{2}}{2N}}} = 1 - \frac{1}{e^{\frac{(2^{34})^{2}}{2(2^{256})}}} = 1 - \frac{1}{e^{\frac{2^{68}}{2^{257}}}} = 1 - \frac{1}{e^{\frac{1}{2^{189}}}} = 1 - \frac{1}{\sqrt[189]{e}} \approx 1 - \frac{1}{1} = 1 - 1 = 0
+```
 

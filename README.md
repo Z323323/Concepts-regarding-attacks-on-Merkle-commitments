@@ -176,4 +176,22 @@ Listening to Gemini 3 Pro, this stuff is contained into _"The Art of Computer Pr
 
 ## Floyd algorithm
 
+This algorithm is generally referred to as the _"turtoise and hare algorithm"_.
 
+We start by setting
+
+```
+turtoise = start_value
+hare = start_value
+```
+
+where `start_value` will be considered better later. Now
+
+```
+while(true)
+  turtoise = H(turtoise)
+  hare = H(turtoise) # Note that hare is H(H(turtoise)) if we consider the previous turtoise value
+  if(turtoise == hare) break
+
+
+```

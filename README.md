@@ -136,20 +136,20 @@ we can see that the probability of having no hash collision **decreases quadrati
 --
 ```
 ```math
-\log_{e}(0,2) = \log_{e}(1/5) = \log_{e}(1) - \log_{e}(5) = 0 - 1,609437912 = - 1,609437912
+\log_{e}(0,2) = \log_{e}(1/5) = \log_{e}(1) - \log_{e}(5) = 0 - 1.609437912 = - 1.609437912
 ```
 
-For this last equations refer to [https://github.com/Z323323/Logarithm-rules].
+For these last equations refer to [https://github.com/Z323323/Logarithm-rules].
 
 ```math
 --
 ```
 ```math
-- 1,609437912 = - \frac{n^{2}}{2N}
+- 1.609437912 = - \frac{n^{2}}{2N}
 ```
 ```math
-n^{2} = 2N(1,609437912)
+n^{2} = 2N(1.609437912)
 ```
 ```math
-n = \sqrt{2N}\sqrt{1,609437912}
+n = \sqrt{2N}\sqrt{1.609437912}
 ```

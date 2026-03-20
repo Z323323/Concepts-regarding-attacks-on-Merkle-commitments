@@ -191,7 +191,7 @@ where `start_value` will be considered better later. Now
 while(true)
   turtoise = H(turtoise)
   hare = H(turtoise) # Note that hare is H(H(turtoise)) if we consider the previous turtoise value
-  if(turtoise == hare) break
+  if(turtoise == hare) break # We got a collision! that is, H(x_{1}) = H(x_{2}) where x_{1} = turtoise and x_{2} = H(turtoise)
 
 
 ```

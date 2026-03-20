@@ -1,6 +1,6 @@
 # Concepts regarding attacks on Merkle commitments
 
-We are going to attack the logic behind Merkle proofs and find out why the attested security is half the bits of the digest of the hash function chosen.
+We are going to attack the logic behind Merkle proofs and find out why the attested security is half the bits of the digest of the hash function chosen. We are also going to understand why Merkle trees and hash functions are so damn powerful so that we can't fucking attack anything.
 
 ## Birthday paradox
 
@@ -166,32 +166,12 @@ Now we need to understand why it is so simple to hit one collision, and therefor
 
 ## The _"paradox"_ explained
 
-In order to understand why it is so simple to obtain a collision we need to understand that the _birthday paradox_ calculates the probability everyone in the group of people has to be born the same day of anyone else, i.e. **for each person birthday, we should check all other people birthdays**. That's why a collision is so likely to happen.
+In order to understand why it is so simple to obtain a collision we need to understand that the _birthday paradox_ calculates the probability anyone in the group of people has to be born the same day of anyone else, i.e. **for each person birthday, we should check all other people birthdays**. That's why a collision is so likely to happen.
 
 ## From the _"paradox"_ to the real world
 
-Now that we know basically everything about the _birthday paradox_, we should ask ourselves _"how the actual fuck would I check each hash with all the others in a real scenario?"_. Well the fact is that **we don't need to**. Since we have a probability of collision, then we could generate random hashes and check if we got a collision end of the story. The interesting stuff here, is that **in order to exploit the birthday paradox we should (at least this is my opinion) generate random hash pairs and check them, otherwise if we set one hash and randomize the other one, we would just be checking the collision on some well defined hash, for which the probability falls to $\frac{1}{N}$**. See that perhaps _"paradox"_ noun is well defined. This conclusion, and the conclusion to only use a single pair and randomize both, is the crazy intuition of Robert W. Floyd and we are going to understand how his algorithm works. Note that this looks simple but what if I didn't tell you that we could use a pair and randomize both to simulate the _birthday paradox_ scenario? You could rightfully think that it would be impossibile to reproduce it, because we could need to check each hash with all the others (which would be impossible, since we are handling $\approx 2^{80}$ hashes).
+Now that we know basically everything about the _birthday paradox_, we should ask ourselves **_"how the actual fuck would I check each hash with all the others in a real scenario?"_**. Well, there are algorithms like _turtoise and hare_ (Robert W. Floyd) which try to solve the problem of memory occupation. They try to find collisions building only 2 "paths" of hashes and trying to find the "period" of the function, and after that, they try to reconstruct the point of collision. The main problem of these kind of algorithms is that the hash "paths" are only buildable using the form $H(H(H(\dots(x)\dots)))$, and for really secure stuff like SHA256 etc. it's not feasible because the "periods" are too long to compute. Even if we talk about an _hare_, we are talking about an _hare_ which needs to run from Earth to the end of the galaxy.
 
-Listening to Gemini 3 Pro, this stuff is contained into _"The Art of Computer Programming"_ $2nd$ volume (chapter 3.1) by Donald Knuth.
-
-## Floyd algorithm
-
-This algorithm is generally referred to as the _"turtoise and hare algorithm"_.
-
-We start by setting
-
-```
-turtoise = start_value
-hare = start_value
-```
-
-where `start_value` will be considered better later. Now
-
-```
-while(true)
-  turtoise = H(turtoise)
-  hare = H(turtoise) # Note that hare is H(H(turtoise)) if we consider the previous turtoise value
-  if(turtoise == hare) break # We got a collision! that is, H(x_{1}) = H(x_{2}) where x_{1} = turtoise and x_{2} = H(turtoise)
+Another approach which I would follow is the pure one. Say we have SHA256, so 256 bits digests, so 32 bytes. We exploit the $n$ value. That is, we use as much RAM as possible to compute as many hashes as possible starting from a crazy long vector of random seeds. For each step we compute $H$ on every seed, then, we use the fastest way possible to compute `next_state - prev_state` and find 
 
 
-```

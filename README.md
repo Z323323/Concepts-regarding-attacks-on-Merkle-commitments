@@ -124,4 +124,11 @@ Extracting now
 \frac{n^{2}}{2N}
 ```
 
-we can see that the probability of having no hash collisions **decreases quadratically on $n$ attempts**. This is finally why it is called a "paradox". Let's calculate the $80\%$ probability of a collision. We have $80\% = \frac{4}{5}$.
+we can see that the probability of having no hash collisions **decreases quadratically on $n$ attempts**. This is finally why it is called a _"paradox"_. Let's now calculate **the number of attempts ($n$) needed in order to achieve the $80\\%$ probability of a collision (we would be almost sure to hit one)**. This means we need to compute **the $20\\%$ probability of not having an hash collision**. Now
+
+```math
+20\% = e^{- (\frac{n^{2}}{2N})}
+```
+```math
+\log_{e}(0,8) = \log_{e}
+```

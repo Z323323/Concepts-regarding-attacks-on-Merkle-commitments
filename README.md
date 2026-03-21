@@ -166,7 +166,7 @@ Now we need to understand why it is so simple to hit one collision, and therefor
 
 ## The _"paradox"_ explained
 
-In order to understand why it is so simple to obtain a collision we need to understand that the _birthday paradox_ calculates the probability anyone in the group of people has to be born the same day of anyone else, i.e. **for each person birthday, we should check all other people birthdays**. That's why a collision is so likely to happen.
+The _birthday paradox_ calculates the probability anyone in the group of people has to be born the same day of anyone else, i.e. **for each person birthday, we should check all other people birthdays**. That's why a collision is so likely to happen.
 
 ## From the _"paradox"_ to the real world
 

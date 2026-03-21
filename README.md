@@ -172,7 +172,15 @@ The _birthday paradox_ calculates the probability anyone in the group of people 
 
 Now that we know basically everything about the _birthday paradox_, we should ask ourselves **_"how the actual fuck would I check each hash with all the others in a real scenario?"_**. Well, there are algorithms like _turtoise and hare_ (Robert W. Floyd) which try to solve the problem of memory occupation. They try to find collisions building only 2 "paths" of hashes and trying to find the "period" of the function, and after that, they try to rebuild the point of collision. The main problem of these kind of algorithms is that the hash "paths" are only buildable using the form $H(H(H(\dots(x)\dots)))$, and for really secure stuff like SHA256 etc. it's not feasible because the "periods" are too long to compute. Even if we talk about an _hare_, we are talking about an _hare_ which needs to run from Earth to the end of the galaxy.
 
-Another approach which I would follow is the pure one. Say we have SHA256, so 256 bits digests, so 32 bytes. We exploit the $n$ value. That is, we use as much RAM as possible to compute as many hashes as possible starting from a crazy long vector of random seeds. For each step we compute $H$ on every seed, then, we use the fastest way possible to compute `next_state - prev_state = state_diff` (hyper parallelization required here). After that, we could try `r = 1; r = r * each_256_bits_element_of_the_state_diff_vector`. If we get $r = 0$ then we have a collision, otherwise we don't. But ig there are faster methods available (like autoflag a $0$ buffer from HW). So, say we could afford the previous 2 problems in O(1), what's the main problem now? Having 1TB of RAM (kinda optimistic) we could handle
+Another approach which I would follow is the pure one. Say we have SHA256, so 256 bits digests, so 32 bytes. We exploit the $n$ value, that is, we use as much RAM as possible to compute as many hashes as possible starting from a crazy long vector of random seeds. In the first step we simply ensure the random seeds are all different (using the same tactic we are going to see now). For each step we compute $H$ on `prev_state`, that is, on every single 256 bits var (hyper parallelization), then, we check if, using the hash table mechanism the value at the address $H_{table}(prev\_var)$ was already there. If it was, then we'd have a collision otherwise we don't. In order to check the last step, we should extract `prev_var` from memory at addr $H_{table}(prev\_var)$ [ $O(1)$ ] and load it into CPU registers, then compute
+
+```math
+H(x) XOR H_{table}(prev\_var)\{ prev\_var \}
+```
+
+and check if the result is $0$. If it is, then we have a collision. Otherwise we don't and we write $H(x)$ into $H_{table}(prev\_var)$.
+
+Say we could afford the previous 2 problems in O(1), what's the main problem now? Having 1TB of RAM (kinda optimistic) we could handle
 
 ```math
 \frac{1TB}{(2 \cdot 32)B} = \frac{2^{40}B}{2^{6}B} = 2^{34}

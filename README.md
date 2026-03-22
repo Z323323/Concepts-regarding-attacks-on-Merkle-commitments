@@ -200,4 +200,4 @@ Say we find a way to get some hash collision pwning Poseidon, how would we explo
 
 STARKs require many Merkle proofs. **For each tree we could generate one single collision (it's not possible, but still) on the root to generate fake proofs and destroy the security**. Let's understand how.
 
-Say we have `Malicious_Merkle_root = MMR` and some leaves we obtain through random oracle challenges. **We fix honest leaves (we substitute malicious ones) and generate `Honest_Merkle_root = HMR`.** 
+Say we have `Malicious_Merkle_Tree = MMT` and some leaves we obtain through random oracle challenges. **We fix honest leaves (we substitute malicious ones) and generate `Honest_Merkle_Tree = HMT`.** Now, in order to make our malicious tree to pass, we will need to use the previous section mechanism but starting from `initial_state` **where each $(2^{35})$ hash on the vector we test

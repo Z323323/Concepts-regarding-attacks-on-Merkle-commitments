@@ -172,7 +172,7 @@ The _birthday paradox_ calculates the probability anyone in the group of people 
 
 Now that we know basically everything about the _birthday paradox_, we should ask ourselves **_"how the actual fuck would I check each hash with all the others in a real scenario?"_**. Well, there are algorithms like _turtoise and hare_ (Robert W. Floyd) which try to solve the problem of memory occupation. They try to find collisions building only 2 "paths" of hashes and trying to find the "period" of the function, and after that, they try to rebuild the point of collision. The main problem of these kind of algorithms is that the hash "paths" are only buildable using the form $H(H(H(\dots(x)\dots)))$, and for really secure stuff like SHA256 etc. it's not feasible because the "periods" are too long to compute. Even if we talk about an _hare_, we are talking about an _hare_ which needs to run from Earth to the end of the galaxy.
 
-Another approach which I would follow is the pure one. Say we have SHA256, so 256 bits digests, so 32 bytes. We exploit the $n$ value, that is, we use as much RAM as possible to compute as many hashes as possible starting from a crazy long vector of random seeds. In the first step we simply ensure the random seeds are all different (using the same tactic we are going to see now). For each step we compute `H` on `prev_state`, that is, on every single 256 bits var (hyper parallelization), then, we check if, using the hash table mechanism, `H(prev_var)` (the result) is equal to the previous value at the address `H_{table}(prev_var)`. If it is, then we have a collision, otherwise we don't. In order to check the last step, we should extract `prev_var` from memory at addr `H_{table}(prev_var)` [ $O(1)$ ] and load it into CPU registers, then compute
+Another approach which I would follow is the pure one. Say we have SHA256, and so 256 bits digests (32 bytes). We exploit the $n$ value, that is, we use as much RAM as possible to compute as many hashes as possible starting from a long vector of random seeds. In the first step we simply ensure the random seeds are all different (using the same tactic we are going to see now). For each step we compute `H` on `prev_state`, that is, on every single 256 bits var (hyper parallelization), then, we check if, using the hash table mechanism, `H(prev_var)` (the result) is equal to the previous value at the address `H_{table}(prev_var)`. If it is, then we have a collision, otherwise we don't. If we have one then the process is over, otherwise we'll overwrite the memory location `H_{table}(prev_var)`. In order to check the last step, we should extract `prev_var` from memory at addr `H_{table}(prev_var)` [ $O(1)$ ] and load it into CPU registers, then compute
 
 ```
 H(x_{prev_state}) XOR [ read(H_{table}(y_{prev_state})) = ] y_{prev_state}
@@ -180,16 +180,16 @@ H(x_{prev_state}) XOR [ read(H_{table}(y_{prev_state})) = ] y_{prev_state}
 
 and check if the result is $0$. If it is, then we have a collision. Otherwise we don't and we write `H(x_{prev_state})` into `H_{table}(x_{prev_state}) = H_{table}(y_{prev_state})`.
 
-Say we could afford the previous 2 problems in $O(1)$ (negligible), what's the main problem now? Having 1TB of RAM (kinda optimistic) we could handle
+Say we could afford the previous computations in negligible time; what's the main problem now? Having 1TB of RAM (kinda optimistic) we could handle
 
 ```math
-\frac{1TB}{(2 \cdot 32)B} = \frac{2^{40}B}{2^{6}B} = 2^{34}
+\frac{1TB}{32B} = \frac{2^{40}B}{2^{5}B} = 2^{35}
 ```
 
-hashes for each vector (`next_state, prev_state`). Now, if we apply the _"birthday paradox"_ we get
+hashes. Now, if we apply the _"birthday paradox"_ we get
 
 ```math
-\text{Pr}(\text{collision}) = 1 - \frac{1}{e^{\frac{n^{2}}{2N}}} = 1 - \frac{1}{e^{\frac{(2^{34})^{2}}{2(2^{256})}}} = 1 - \frac{1}{e^{\frac{2^{68}}{2^{257}}}} = 1 - \frac{1}{e^{\frac{1}{2^{189}}}} = 1 - \frac{1}{\sqrt[2^{189}]{e}} = 1 - \frac{1}{1} = 1 - 1 = 0
+\text{Pr}(\text{collision}) = 1 - \frac{1}{e^{\frac{n^{2}}{2N}}} = 1 - \frac{1}{e^{\frac{(2^{35})^{2}}{2(2^{256})}}} = 1 - \frac{1}{e^{\frac{2^{70}}{2^{257}}}} = 1 - \frac{1}{e^{\frac{1}{2^{187}}}} = 1 - \frac{1}{\sqrt[2^{187}]{e}} = 1 - \frac{1}{1} = 1 - 1 = 0
 ```
 
 probability of messing with SHA256 using some Google supercomputer.

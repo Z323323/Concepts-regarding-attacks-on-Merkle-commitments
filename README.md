@@ -193,3 +193,11 @@ hashes. Now, if we apply the _"birthday paradox"_ we get
 ```
 
 probability of messing with SHA256 using some Google supercomputer.
+
+## Attacking Merkle proofs nonetheless
+
+Say we find a way to get some hash collision pwning Poseidon, how would we exploit it in a Merkle commitment scenario (like the STARK one)?
+
+STARKs require many Merkle proofs. **For each tree we could generate one single collision (it's not possible, but still) on the root to generate fake proofs and destroy the security**. Let's understand how.
+
+Say we have `Malicious_Merkle_root = MMR` and some leaves we obtain through random oracle challenges. **We fix honest leaves (we substitute malicious ones) and generate `Honest_Merkle_root = HMR`.** 

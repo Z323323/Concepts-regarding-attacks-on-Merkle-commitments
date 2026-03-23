@@ -205,8 +205,10 @@ Since we are literally erasing `prev_state` at each step (overwriting), once we 
 >- $Pr(collision\\_step\\_2) = 1 - e^{- ((2^{35} + 2^{35})^{2} / 2^{257})} = 1 - e^{- ((2^{36})^{2} / 2^{257})} = 1 - e^{- (2^{72} / 2^{257})}$
 >- $\vdots$
 >- $Pr(collision\\_step\\_2^{60}) = 1 - e^{- ((2^{35} + 2^{35} + 2^{35} + 2^{35} \dots)^{2} / 2^{257})} = 1 - e^{- ((2^{35 + 60})^{2} / 2^{257})} = 1 - e^{- ((2^{95})^{2} / 2^{257})} = 1 - e^{- (2^{190} / 2^{257})}$
+>- $\vdots$
+>- $Pr(collision\\_step\\_2^{93}) = 1 - e^{- ((2^{35} + 2^{35} + 2^{35} + 2^{35} \dots)^{2} / 2^{257})} = 1 - e^{- ((2^{35 + 93})^{2} / 2^{257})} = 1 - e^{- ((2^{128})^{2} / 2^{257})} = 1 - e^{- (2^{256} / 2^{257})} = 1 - e^{- (1 / 2)} = 1 - \frac{1}{\sqrt{e}} = 1 - \frac{1}{1,648721271} = 1 - 0,60653066 = 0,39346934 \approx 40\\%$
 
-
+Basically, in order to break one single fucking hash of SHA256 we'd need the computation power of the whole umanity for more than $1$ year + we should break the laws of reality.
 
 ## Attacking Merkle proofs nonetheless
 

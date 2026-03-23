@@ -194,7 +194,7 @@ hashes. Now, if we apply the _"birthday paradox"_ we get
 
 probability of messing with SHA256 using some Google supercomputer.
 
-## Tryharding
+## Tryharding in the sci-fi scenario
 
 What would happen to probability if we kept repeating the previous computation?
 

@@ -194,6 +194,20 @@ hashes. Now, if we apply the _"birthday paradox"_ we get
 
 probability of messing with SHA256 using some Google supercomputer.
 
+## Tryharding
+
+What would happen to probability if we kept repeating the previous computation?
+
+Since we are literally erasing `prev_state` at each step (overwriting), once we compute `current_state` and overwrite, `next_state` won't be compared to `prev_state`. This breaks the powerful mechanism which would enable us to obtain more power on the collision problem. If we'd be able to create a linkage between states without adding space required for computation (the actual bottleneck is RAM and I/O speed) we'd be perhaps able to pose a threat to security. The problem is this is probably not possible. I think Claude Shannon wrote something about this.
+
+>- **Probability if we'd be able to create a linkage**
+>- $Pr(collision\\_step\\_1) = 1 - e^{- ((2^{35})^{2} / 2^{257})} = 1 - e^{- (2^{70} / 2^{257})}$
+>- $Pr(collision\\_step\\_2) = 1 - e^{- ((2^{35} + 2^{35})^{2} / 2^{257})} = 1 - e^{- ((2^{36})^{2} / 2^{257})} = 1 - e^{- (2^{72} / 2^{257})}$
+>- $\vdots$
+>- $Pr(collision\\_step\\_2^{60}) = 1 - e^{- ((2^{35} + 2^{35} + 2^{35} + 2^{35} \dots)^{2} / 2^{257})} = 1 - e^{- ((2^{35 + 60})^{2} / 2^{257})} = 1 - e^{- ((2^{95})^{2} / 2^{257})} = 1 - e^{- (2^{190} / 2^{257})}$
+
+
+
 ## Attacking Merkle proofs nonetheless
 
 Say we find a way to get some hash collision pwning Poseidon, how would we exploit it in a Merkle commitment scenario (like the STARK one)?

@@ -210,7 +210,11 @@ Since we are literally erasing `prev_state` at each step (overwriting), once we 
 
 Basically, in order to break one single fucking hash of SHA256 we'd need the computation power of the whole umanity for more than $1$ year + we should break the laws of reality. Gemini states the actual hash (SHA256) power of humanity in an year is around $2^{94}$ trials in an year. I'm not checking this result but I'll believe it's correct since SHA256 and this particular stuff is is quite famous because of Bitcoin. We should by the way restrict this result a lot because of I/O bottleneck. SHA256 is literally god's power proof.
 
-## Attacking Merkle proofs nonetheless
+## Actual biggest threat to SHA security
+
+The biggest threat is of course not the one I delved in this article. Listening to Gemini there exists one quantum attack called BHT (Brassard-Høyer-Tapp) which exploits the Grover algorithm and reduces the security to $O(\sqrt[3]{N})$. Now $256 / 3 \approx 85,3$ which means we'll probably need to jump to SHA512 at some point. Because $512 / 3 \approx 170,67$.
+
+## Attacking Merkle proofs nonetheless, real scenario
 
 Say we find a way to get some hash collision pwning Poseidon, how would we exploit it in a Merkle commitment scenario (like the STARK one)?
 

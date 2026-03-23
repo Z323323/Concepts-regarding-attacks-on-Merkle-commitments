@@ -212,7 +212,7 @@ Basically, in order to break one single fucking hash of SHA256 we'd need the com
 
 ## Actual biggest threat to SHA security
 
-The biggest threat is of course not the one I delved in this article. Listening to Gemini there exists one quantum attack called BHT (Brassard-Høyer-Tapp) which exploits the Grover algorithm and reduces the security to $O(\sqrt[3]{N})$. Now $256 / 3 \approx 85,3$ which means we'll probably need to jump to SHA512 at some point $(512 / 3 \approx 170,67)$.
+The biggest threat is of course not the one I delved in this article. Listening to Gemini there exists one quantum attack called BHT (Brassard-Høyer-Tapp) which exploits the Grover algorithm and reduces the security to $O(\sqrt[3]{N})$. Now $256 / 3 \approx 85,3$ which means we'll probably need to jump to something like SHA512 at some point $(512 / 3 \approx 170,67)$. Since $170,6$ is quite far from being attackable, SHA384 could be the best next choice after SHA256 $(384 / 3 = 128)$.
 
 ## Attacking Merkle proofs nonetheless, real scenario
 

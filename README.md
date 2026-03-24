@@ -175,7 +175,7 @@ Now that we know basically everything about the _birthday paradox_, we should as
 Another approach which I would follow is the pure one. Say we have SHA256, and so 256 bits digests (32 bytes). We exploit the $n$ value, that is, we use as much RAM as possible to compute as many hashes as possible starting from a long vector of random seeds. In the first step we simply ensure the random seeds are all different (using the same tactic we are going to see now). For each step we compute `H` on `prev_state`, that is, on every single 256 bits var (hyper parallelization), then, we check if, using the hash table mechanism, `H(prev_var)` (the result) is equal to the previous value at the address `H_{table}(prev_var)`. If it is, then we have a collision, otherwise we don't. If we have one then the process is over, otherwise we'll overwrite the memory location `H_{table}(prev_var)`. In order to check the last step, we should extract `prev_var` from memory at addr `H_{table}(prev_var)` [ $O(1)$ ] and load it into CPU registers, then compute
 
 ```
-H(x_{prev_state}) XOR [ read(H_{table}(y_{prev_state})) = ] y_{prev_state}
+H(x_{prev_state}) XOR y_{prev_state} <- read(H_{table}(y_{prev_state})) 
 ```
 
 and check if the result is $0$. If it is, then we have a collision. Otherwise we don't and we write `H(x_{prev_state})` into `H_{table}(x_{prev_state}) = H_{table}(y_{prev_state})`.

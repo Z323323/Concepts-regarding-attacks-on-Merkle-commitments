@@ -208,7 +208,7 @@ Since we are literally erasing `prev_state` at each step (overwriting), once we 
 >- $\vdots$
 >- $Pr(collision\\_step\\_2^{93}) = 1 - e^{- ((2^{35} + 2^{35} + 2^{35} + 2^{35} \dots)^{2} / 2^{257})} = 1 - e^{- ((2^{35 + 93})^{2} / 2^{257})} = 1 - e^{- ((2^{128})^{2} / 2^{257})} = 1 - e^{- (2^{256} / 2^{257})} = 1 - e^{- (1 / 2)} = 1 - \frac{1}{\sqrt{e}} = 1 - \frac{1}{1,648721271} = 1 - 0,60653066 = 0,39346934 \approx 40\\%$
 
-Basically, in order to break one single fucking hash of SHA256 we'd need the computation power of the whole umanity for more than $1$ year + we should break the laws of reality. Gemini states the actual hash (SHA256) power of humanity in an year is around $2^{94}$ trials in an year. I'm not checking this result but I'll believe it's correct since SHA256 and this particular stuff is quite famous because of Bitcoin. We should by the way restrict this result a lot because of I/O bottleneck. SHA256 is literally god's power proof.
+Basically, in order to break one single fucking hash of SHA256 we'd need the computation power of the whole umanity for more than $1$ year + we should break the laws of reality. Gemini says the actual hash (SHA256) power of humanity in an year is around $2^{94}$ trials. I'm not checking this result but I'll believe it's correct since SHA256 and this particular stuff is quite famous because of Bitcoin. We should by the way restrict this result a lot because of I/O bottleneck. SHA256 is literally god's power proof.
 
 ## Actual biggest threats to SHA security
 

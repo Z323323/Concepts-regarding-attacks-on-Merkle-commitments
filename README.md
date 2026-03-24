@@ -224,16 +224,18 @@ This means we are either going to find some crazy agorithm which probably doesn'
 
 The biggest threat is of course not the one I delved in this article. Listening to Gemini there exists one quantum attack called BHT (Brassard-Høyer-Tapp) which exploits the Grover algorithm and reduces the security to $O(\sqrt[3]{N})$. Now $256 / 3 \approx 85,3$ which means we'll probably need to jump to something like SHA512 at some point $(512 / 3 \approx 170,67)$. Since $170,67$ is quite far from being attackable, SHA384 could be the best next choice after SHA256 $(384 / 3 = 128)$. Also, BHT could literally be unfeasible for long time for certain reasons, in fact, usually everyone cites Grover only, which will be the actual next problem (as soon as QCs start really working) for hash functions. From what I'm perceiving, Grover splits $N$ in half, and so SHA256 will be hopefully secure for looong time.
 
-## Attacking Merkle proofs nonetheless in the STARK scenario
+## How STARKs are crazy bullet proof under every single aspect (if implemented correctly)
 
 Say we find a way to get some hash collision pwning Poseidon, how would we exploit it in a Merkle commitment scenario (like the STARK one)?
 
-STARKs require many Merkle proofs. **For each tree we could generate one single collision (it's not possible, but still) on the root to generate fake proofs and destroy the security**. Let's understand how.
+STARKs require many Merkle proofs. **For each tree we could generate one single collision (it's not possible, but still, let's say it is) on the root to generate fake proofs**. Let's understand how we could try to use them and once again we'd be blocked by a correct AIR constraints implementation.
 
-Say we have `Malicious_Merkle_Tree = MMT` and some leaves we obtain through random oracle challenges. **We fix honest leaves (we substitute malicious ones) and generate `Fake_Honest_Merkle_Tree = FHMT`.** Now, in order to make our malicious tree to pass, we will need to use the previous section mechanism but starting from `initial_state` **where each $(2^{35})$ hash on the vector we test are obtained varying some leaves (or better, some nodes, if we can) in `FHMT` and `MMT`. Since we'll need to get a collision between the roots of `FHMT` and `MMT` we will lose another half probability of getting an useful collision**, thus obtaining
+Say we have `Malicious_Merkle_Trees = MMTs` and some leaves we obtain through random oracle challenges. **We fix honest leaves (we substitute malicious ones) and generate `Fake_Honest_Merkle_Trees = FHMTs`.** Now, in order to make our malicious trees to pass, we will need to use the previous section mechanism (or another one to get the collision; I wrote this one for clarity) but starting from `initial_state` **where each $(2^{35})$ hash on the vector we test are obtained varying some leaves (or better, some nodes, if we can) in `FHMT` and `MMT`. Since we'll need to get a collision between the roots of `FHMT` and `MMT` we will lose another half probability of getting an useful collision**, thus obtaining
 
 ```math
 \text{Pr}(\text{collision}) = 1 - e^{- ((2^{34})^{2} / 2^{257})} = 1 - e^{- (2^{68} / 2^{257})}
 ```
 
-in the first (and only, since we can't exploit the above construction) trial.
+in the first (and only, since we can't exploit the above construction) trial. Now, say we can break Poseidon. We obtain some useful collision and after that substitute `MMTs` with `FHMTs`. Since we forged our trees after random challenges, we could try to pass a proof where our Merkle proofs and commitments completely mirrors honest ones, **but we send malicious statediffs in order to make everyone update their states, then control the root and think _"ok the proof is safe"_ (while it isn't)**.
+
+In order to prevent this last scenario which is impossible imho by the way, because it's impossible to forge that many Merkle collisions (not even one actually). So to absolutely prevent this scenario we should take `statediffs` data directly from blobs and insert useful data directly inside AIR constraints. Doing so we will prevent the previous scenario, but we will need to be sure there exists at least one AIR which relates mask values with statediffs.

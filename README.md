@@ -210,6 +210,16 @@ Since we are literally erasing `prev_state` at each step (overwriting), once we 
 
 Basically, in order to break one single fucking hash of SHA256 we'd need the computation power of the whole umanity for more than $1$ year + we should break the laws of reality. Gemini says the actual hash (SHA256) power of humanity in an year is around $2^{94}$ trials. I'm not checking this result but I'll believe it's correct since SHA256 and this particular stuff is quite famous because of Bitcoin. We should by the way restrict this result a lot because of I/O bottleneck. SHA256 is literally god's power proof.
 
+## Tryharding in the real scenario
+
+We could eventually try to exploit many Google supercomputers and use a central server only to check each hash result to check a collision between many $1TB$ RAMs. Having $256 = 2^{8}$ such computers we could reach
+
+```math
+\text{Pr}(\text{collision}) = 1 - e^{- ((2^{35} \cdot 2^{8})^{2} / 2^{257})} = 1 - e^{- ((2^{43})^{2} / 2^{257})} = 1 - e^{- (2^{86} / 2^{257})} = 0
+```
+
+This means we are either going to find some crazy agorithm which probably doesn't even exist or we can't simply fuck with SHA256 using normal computers. Now the problem resides in QCs and/or particular math manipulations of hash functions.
+
 ## Actual biggest threats to SHA security
 
 The biggest threat is of course not the one I delved in this article. Listening to Gemini there exists one quantum attack called BHT (Brassard-Høyer-Tapp) which exploits the Grover algorithm and reduces the security to $O(\sqrt[3]{N})$. Now $256 / 3 \approx 85,3$ which means we'll probably need to jump to something like SHA512 at some point $(512 / 3 \approx 170,67)$. Since $170,67$ is quite far from being attackable, SHA384 could be the best next choice after SHA256 $(384 / 3 = 128)$. Also, BHT could literally be unfeasible for long time for certain reasons, in fact, usually everyone cites Grover only, which will be the actual next problem (as soon as QCs start really working) for hash functions. From what I'm perceiving, Grover splits $N$ in half, and so SHA256 will be hopefully secure for looong time.

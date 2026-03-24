@@ -1,6 +1,6 @@
 # Concepts regarding attacks on Merkle commitments
 
-We are going to attack the logic behind Merkle proofs and find out why the attested security is half the bits of the digest of the hash function chosen. We are also going to understand why Merkle trees and hash functions are so damn powerful so that we can't fucking attack anything.
+We are going to attack the logic behind Merkle proofs and find out why the attested security is half the bits of the digest of the hash function chosen. We are also going to understand why Merkle trees and hash functions are so damn powerful so that we can't fucking attack (almost) anything.
 
 ## Birthday paradox
 

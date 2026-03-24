@@ -223,7 +223,7 @@ STARKs require many Merkle proofs. **For each tree we could generate one single 
 Say we have `Malicious_Merkle_Tree = MMT` and some leaves we obtain through random oracle challenges. **We fix honest leaves (we substitute malicious ones) and generate `Fake_Honest_Merkle_Tree = FHMT`.** Now, in order to make our malicious tree to pass, we will need to use the previous section mechanism but starting from `initial_state` **where each $(2^{35})$ hash on the vector we test are obtained varying some leaves (or better, some nodes, if we can) in `FHMT` and `MMT`. Since we'll need to get a collision between the roots of `FHMT` and `MMT` we will lose another half probability of getting an useful collision**, thus obtaining
 
 ```math
-Pr(collision\\_step\\_1) = 1 - e^{- ((2^{34})^{2} / 2^{257})} = 1 - e^{- (2^{68} / 2^{257})}
+\text{Pr}(\text{collision}) = 1 - e^{- ((2^{34})^{2} / 2^{257})} = 1 - e^{- (2^{68} / 2^{257})}
 ```
 
 in the first (and only, since we can't exploit the above construction) trial.

@@ -91,7 +91,7 @@ Back to our hash collisions scenario, renaming $2^{160} - 1 = N$ we can finally 
 and
 
 ```math
-e^{- \frac{1}{N}} \cdot e^{- \frac{2}{N}} \cdot \dots \cdot e^{- \frac{n - 1}{N}} = e^{- (\frac{1 + 2 + \dots + n - 1)}{N})}
+e^{- \frac{1}{N}} \cdot e^{- \frac{2}{N}} \cdot \dots \cdot e^{- \frac{n - 1}{N}} = e^{- (\frac{1 + 2 + \dots + n - 1}{N})}
 ```
 
 Recalling the Gauss formula

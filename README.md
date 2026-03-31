@@ -164,15 +164,15 @@ which finally somehow justifies why people write the security of hash functions 
 
 Now we need to understand why it is so simple to hit one collision, and therefore what actually the paradox states. This is important in order to think of some collision attack.
 
-## The _"paradox"_ explained
+## The _paradox_ explained
 
 The _birthday paradox_ calculates the probability anyone in the group of people has to be born the same day of anyone else, i.e. **for each person birthday, we should check all other people birthdays**. That's why a collision is so likely to happen.
 
-## From the _"paradox"_ to the real world
+## From the _paradox_ to the real world
 
-Now that we know basically everything about the _birthday paradox_, we should ask ourselves **_"how the actual fuck would I check each hash with all the others in a real scenario?"_**. Well, there are algorithms like _turtoise and hare_ (Robert W. Floyd) which try to solve the problem of memory occupation. They try to find collisions building only 2 "paths" of hashes and trying to find the "period" of the function, and after that, they try to rebuild the point of collision. The main problem of these kind of algorithms is that the hash "paths" are only buildable using the form $H(H(H(\dots(x)\dots)))$, and for really secure stuff like SHA256 etc. it's not feasible because the "periods" are too long to compute. Even if we talk about an _hare_, we are talking about an _hare_ which needs to run from Earth to the end of the galaxy. I won't delve these kind of algorithms but it would be interesting to find some fusion mechanism between this approach and the next (trying to find the best compromise between CPU speed and memory occupation).
+Now that we know basically everything about the _birthday paradox_, we should ask ourselves **_"how would we check each hash with all the others in a real scenario?"_**. Well, there are algorithms like _turtoise and hare_ (Robert W. Floyd) which try to solve the problem of memory occupation. They try to find collisions building only 2 "paths" of hashes and trying to find the "period" of the function, and after that, they try to rebuild the point of collision. The main problem of these kind of algorithms is that the hash "paths" are only buildable using the form $H(H(H(\dots(x)\dots)))$, and for really secure stuff like SHA256 etc. it's not feasible because the "periods" are too long to compute. Even if we talk about an _hare_, we are talking about an _hare_ which needs to run from Earth to the end of the galaxy. I won't delve these kind of algorithms but it would be interesting to find some fusion mechanism between this approach and the next (trying to find the best compromise between CPU speed and memory occupation).
 
-Another approach which I would follow is the pure one. Say we have SHA256, and so 256 bits digests (32 bytes). We exploit the $n$ value, that is, we use as much RAM as possible to compute as many hashes as possible starting from a long vector of random seeds. In the first step we simply ensure the random seeds are all different (using the same tactic we are going to see now). For each step we compute `H` on `prev_state`, that is, on every single 256 bits var (hyper parallelization), then, we check if, using the hash table mechanism, `H(prev_var)` (the result) is equal to the previous value at the address `H_{table}(prev_var)`. If it is, then we have a collision, otherwise we don't. If we have one then the process is over, otherwise we'll overwrite the memory location `H_{table}(prev_var)`. In order to check the last step, we should extract `prev_var` from memory at addr `H_{table}(prev_var)` [ $O(1)$ but I/O is slow asf ] and load it into CPU registers, then compute
+Another approach which I would follow is the pure one. Say we have SHA256, and so 256 bits digests (32 bytes). We exploit the $n$ value, that is, we use as much RAM as possible to compute as many hashes as possible starting from a long vector of random seeds. In the first step we simply ensure the random seeds are all different (using the same tactic we are going to see now). For each step we compute `H` on `prev_state`, that is, on every single 256 bits var (hyper parallelization), then, we check if, using the hash table mechanism, `H(prev_var)` (the result) is equal to the previous value at the address `H_{table}(prev_var)`. If it is, then we have a collision, otherwise we don't. If we have one then the process is over, otherwise we'll overwrite the memory location `H_{table}(prev_var)`. In order to check the last step, we should extract `prev_var` from memory at addr `H_{table}(prev_var)` [ $O(1)$ but I/O is slow ] and load it into CPU registers, then compute
 
 ```
 H(x_{prev_state}) XOR y_{prev_state} <- read(H_{table}(y_{prev_state})) 
@@ -186,7 +186,7 @@ Say we could afford the previous computations in negligible time; what's the mai
 \frac{1TB}{32B} = \frac{2^{40}B}{2^{5}B} = 2^{35}
 ```
 
-hashes. Now, if we apply the _"birthday paradox"_ we get
+hashes. Now, if we apply the _birthday paradox_ we get
 
 ```math
 \text{Pr}(\text{collision}) = 1 - \frac{1}{e^{\frac{n^{2}}{2N}}} = 1 - \frac{1}{e^{\frac{(2^{35})^{2}}{2(2^{256})}}} = 1 - \frac{1}{e^{\frac{2^{70}}{2^{257}}}} = 1 - \frac{1}{e^{\frac{1}{2^{187}}}} = 1 - \frac{1}{\sqrt[2^{187}]{e}} = 1 - \frac{1}{1} = 1 - 1 = 0
@@ -208,7 +208,7 @@ Since we are literally erasing `prev_state` at each step (overwriting), once we 
 >- $\vdots$
 >- $Pr(collision\\_step\\_2^{93}) = 1 - e^{- ((2^{35} + 2^{35} + 2^{35} + 2^{35} \dots)^{2} / 2^{257})} = 1 - e^{- ((2^{35 + 93})^{2} / 2^{257})} = 1 - e^{- ((2^{128})^{2} / 2^{257})} = 1 - e^{- (2^{256} / 2^{257})} = 1 - e^{- (1 / 2)} = 1 - \frac{1}{\sqrt{e}} = 1 - \frac{1}{1,648721271} = 1 - 0,60653066 = 0,39346934 \approx 40\\%$
 
-Basically, in order to break one single fucking hash of SHA256 we'd need the computation power of the whole umanity for more than $1$ year + we should break the laws of reality. Gemini says the actual hash (SHA256) power of humanity in an year is around $2^{94}$ trials. I'm not checking this result but I'll believe it's correct since SHA256 and this particular stuff is quite famous because of Bitcoin. We should by the way restrict this result a lot because of I/O bottleneck. SHA256 is literally god's power proof.
+Basically, in order to break one single hash of SHA256 we'd need the computation power of the whole umanity for more than $1$ year + we should break the laws of reality. Gemini says the actual hash (SHA256) power of humanity in an year is around $2^{94}$ trials. I'm not checking this result but I'll believe it's correct since SHA256 and this particular stuff is quite famous because of Bitcoin. We should by the way restrict this result a lot because of I/O bottleneck. SHA256 is literally god's power proof.
 
 ## Tryharding in the real scenario
 
@@ -218,7 +218,11 @@ We could eventually try to exploit many Google supercomputers and use a central 
 \text{Pr}(\text{collision}) = 1 - e^{- ((2^{35} \cdot 2^{8})^{2} / 2^{257})} = 1 - e^{- ((2^{43})^{2} / 2^{257})} = 1 - e^{- (2^{86} / 2^{257})} = 0
 ```
 
-This means we are either going to find some crazy agorithm which probably doesn't even exist or we can't simply fuck with SHA256 using normal computers. Now the problem resides in QCs and/or particular math manipulations of hash functions.
+This means we are either going to find some crazy agorithm which probably doesn't even exist or we can't simply break SHA256 using normal computers. Now the problem resides in QCs and/or particular math manipulations of hash functions.
+
+## Brainless bruteforce
+
+Say we just keep repeating trials. In this case, we would simply need $\approx 2^{186}$ attempts in the supercomputer scenario, and $\approx 2^{170}$ in the server based solution to achieve $50\\%$ probability. The actual problem is even worse because each trial is way more than $O(1)$ and I/O is slow.
 
 ## Quantum threats to SHA security
 
